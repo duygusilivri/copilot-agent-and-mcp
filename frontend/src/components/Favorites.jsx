@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { fetchFavorites } from '../store/favoritesSlice';
+import { fetchFavorites, removeFavorite } from '../store/favoritesSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Favorites = () => {
@@ -17,6 +17,16 @@ const Favorites = () => {
     }
     dispatch(fetchFavorites(token));
   }, [dispatch, token, navigate]);
+
+  // generated-by-copilot: Handler to remove a book from favorites
+  const handleRemoveFavorite = async (bookId) => {
+    if (!token) {
+      navigate('/');
+      return;
+    }
+    await dispatch(removeFavorite({ token, bookId }));
+    dispatch(fetchFavorites(token));
+  };
 
   if (status === 'loading') return <div>Loading...</div>;
   if (status === 'failed') return <div>Failed to load favorites.</div>;
@@ -41,10 +51,43 @@ const Favorites = () => {
           </p>
         </div>
       ) : (
-        <ul>
+        <ul style={{
+          background: '#fff',
+          padding: '2rem',
+          borderRadius: '8px',
+          maxWidth: '600px',
+          margin: '2rem auto',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+          listStyle: 'none',
+        }}>
           {favorites.map(book => (
-            <li key={book.id}>
-              <strong>{book.title}</strong> by {book.author}
+            <li key={book.id} style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '1rem',
+              borderBottom: '1px solid #eee',
+            }}>
+              <div>
+                <strong>{book.title}</strong> by {book.author}
+              </div>
+              <button
+                onClick={() => handleRemoveFavorite(book.id)}
+                style={{
+                  padding: '0.5rem 1rem',
+                  fontSize: '0.9rem',
+                  background: '#dc3545',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s',
+                }}
+                onMouseOver={(e) => e.target.style.background = '#c82333'}
+                onMouseOut={(e) => e.target.style.background = '#dc3545'}
+              >
+                Remove
+              </button>
             </li>
           ))}
         </ul>
