@@ -58,11 +58,8 @@ const Favorites = () => {
               <div className={styles.bookTitle}>{book.title}</div>
               <div className={styles.bookAuthor}>by {book.author}</div>
               <button
-                className={styles.simpleBtn}
+                className={styles.removeBtn}
                 onClick={() => handleRemoveFavorite(book.id)}
-                style={{ background: '#dc3545' }}
-                onMouseOver={(e) => e.currentTarget.style.background = '#c82333'}
-                onMouseOut={(e) => e.currentTarget.style.background = '#dc3545'}
               >
                 Remove from Favorites
               </button>

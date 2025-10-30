@@ -32,6 +32,22 @@
 .simpleBtn:hover {
   background: #178d8d;
 }
+/* generated-by-copilot: Add remove button style for favorites */
+.removeBtn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.removeBtn:hover {
+  background: #c82333;
+}
 .heartBtn:focus,
 .heartBtn:focus-visible,
 .heartBtn:active {
