@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+/* generated-by-copilot: Modern register form with enhanced styling */
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -32,9 +33,33 @@ const Register = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      {success && <div style={{ color: 'green' }}>{success}</div>}
+      <h2 style={{ 
+        textAlign: 'center', 
+        marginTop: 0,
+        fontSize: '2rem',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+      }}>Register</h2>
+      {error && <div style={{ 
+        color: '#e53e3e', 
+        background: '#fed7d7',
+        padding: '0.75rem',
+        borderRadius: '8px',
+        marginBottom: '1rem',
+        fontSize: '0.9rem',
+        fontWeight: 500,
+      }}>{error}</div>}
+      {success && <div style={{ 
+        color: '#38a169', 
+        background: '#c6f6d5',
+        padding: '0.75rem',
+        borderRadius: '8px',
+        marginBottom: '1rem',
+        fontSize: '0.9rem',
+        fontWeight: 500,
+      }}>{success}</div>}
       <input
         name="username"
         type="text"

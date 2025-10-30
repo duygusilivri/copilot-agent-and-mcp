@@ -40,17 +40,18 @@ const BookList = () => {
       <h2>Books</h2>
       {books.length === 0 ? (
         <div style={{
-          background: '#fff',
-          padding: '2rem',
-          borderRadius: '8px',
-          maxWidth: '400px',
+          background: 'rgba(255, 255, 255, 0.95)',
+          padding: '3rem',
+          borderRadius: '16px',
+          maxWidth: '500px',
           margin: '2rem auto',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+          boxShadow: '0 10px 40px rgba(0,0,0,0.12)',
           textAlign: 'center',
-          color: '#888',
+          color: '#718096',
+          border: '1px solid rgba(255,255,255,0.18)',
         }}>
-          <p>No books available.</p>
-          <p>Check back later or add a new book if you have permission.</p>
+          <p style={{ fontSize: '1.1rem', marginBottom: '0.5rem', fontWeight: 600 }}>No books available.</p>
+          <p style={{ fontSize: '1rem' }}>Check back later or add a new book if you have permission.</p>
         </div>
       ) : (
         <div className={styles.bookGrid}>
