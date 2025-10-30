@@ -47,7 +47,13 @@ const favoritesSlice = createSlice({
       .addCase(fetchFavorites.rejected, state => { state.status = 'failed'; })
       .addCase(addFavorite.fulfilled, (state, action) => {
         // After adding, fetch the updated favorites list to ensure UI is in sync
-      });
+      })
+      .addCase(removeFavorite.pending, state => { state.status = 'loading'; })
+      .addCase(removeFavorite.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        // After removing, fetch the updated favorites list to ensure UI is in sync
+      })
+      .addCase(removeFavorite.rejected, state => { state.status = 'failed'; });
   },
 });
 

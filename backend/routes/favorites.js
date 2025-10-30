@@ -18,7 +18,7 @@ function createFavoritesRouter({ usersFile, booksFile, readJSON, writeJSON, auth
     const users = readJSON(usersFile);
     const user = users.find(u => u.username === req.user.username);
     if (!user) return res.status(404).json({ message: 'User not found' });
-    if (user.favorites.indexOf(bookId) == -1) {
+    if (user.favorites.indexOf(bookId) === -1) {
       user.favorites.push(bookId);
       writeJSON(usersFile, users);
     }
