@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { fetchFavorites } from '../store/favoritesSlice';
+import { fetchFavorites, removeFavorite } from '../store/favoritesSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Favorites = () => {
@@ -17,6 +17,20 @@ const Favorites = () => {
     }
     dispatch(fetchFavorites(token));
   }, [dispatch, token, navigate]);
+
+  // generated-by-copilot: handler to remove a book from favorites
+  const handleRemoveFavorite = async (bookId) => {
+    if (!token) {
+      navigate('/');
+      return;
+    }
+    try {
+      await dispatch(removeFavorite({ token, bookId }));
+      dispatch(fetchFavorites(token));
+    } catch (error) {
+      console.error('Failed to remove favorite:', error);
+    }
+  };
 
   if (status === 'loading') return <div>Loading...</div>;
   if (status === 'failed') return <div>Failed to load favorites.</div>;
@@ -43,8 +57,25 @@ const Favorites = () => {
       ) : (
         <ul>
           {favorites.map(book => (
-            <li key={book.id}>
-              <strong>{book.title}</strong> by {book.author}
+            <li key={book.id} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div>
+                <strong>{book.title}</strong> by {book.author}
+              </div>
+              <button 
+                onClick={() => handleRemoveFavorite(book.id)}
+                style={{
+                  marginLeft: '1rem',
+                  padding: '0.5rem 1rem',
+                  backgroundColor: '#e25555',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Remove
+              </button>
             </li>
           ))}
         </ul>
