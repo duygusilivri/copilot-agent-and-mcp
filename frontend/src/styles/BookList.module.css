@@ -1,36 +1,46 @@
+/* generated-by-copilot: Modern card styles with improved visual design */
 .bookCardWithHeart {
   position: relative;
 }
+
 .favoriteHeart {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   z-index: 2;
   pointer-events: none;
-  filter: drop-shadow(0 2px 6px #e2555540);
+  filter: drop-shadow(0 3px 8px rgba(226, 85, 85, 0.35));
+  animation: heartPulse 0.3s ease;
 }
-.favoriteHeart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 6px #e2555540);
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
+
 .simpleBtn {
-  background: #20b2aa;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 0.4rem 1rem;
-  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   cursor: pointer;
   align-self: flex-end;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
+  margin-top: 0.8rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
+
 .simpleBtn:hover {
-  background: #178d8d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.45);
+}
+
+.simpleBtn:active {
+  transform: translateY(0);
 }
 .heartBtn:focus,
 .heartBtn:focus-visible,
@@ -53,45 +63,79 @@
   box-shadow: none !important;
   background: none !important;
 }
+/* generated-by-copilot: Modern grid layout with responsive design */
 .bookGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
   margin: 2rem 0;
   width: 100%;
   max-width: 1400px;
+  padding: 0 2rem;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  .bookGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
 .bookCard {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 1.5rem 1rem 1rem 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 140px;
-  transition: box-shadow 0.2s;
+  min-height: 160px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.bookCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .bookCard:hover {
-  box-shadow: 0 4px 16px rgba(32,178,170,0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(102, 126, 234, 0.25), 0 4px 16px rgba(102, 126, 234, 0.15);
+}
+
+.bookCard:hover::before {
+  opacity: 1;
 }
 
 .bookTitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #20b2aa;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #2d3748;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
 }
 
 .bookAuthor {
-  font-size: 0.98rem;
-  color: #555;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #718096;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
 }
 
 .heartBtn {
