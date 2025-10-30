@@ -36,6 +36,30 @@ describe('Book Favorites App', () => {
     cy.get('h2').contains('My Favorite Books').should('exist');
   });
 
+  // generated-by-copilot: Test removing books from favorites
+  it('should allow removing books from favorites', () => {
+    // Login first
+    cy.contains('Login').click();
+    cy.get('input[name="username"]').type(user.username);
+    cy.get('input[name="password"]').type(user.password);
+    cy.get('button#login').click();
+    cy.contains('Books').click();
+    cy.contains('h2', 'Books').should('exist');
+    // Add a book to favorites
+    cy.get('button').contains('Add to Favorites').first().click();
+    cy.wait(500);
+    // Go to favorites page
+    cy.get('a#favorites-link').click();
+    cy.get('h2').contains('My Favorite Books').should('exist');
+    // Verify book is in favorites
+    cy.get('button').contains('Remove from Favorites').should('exist');
+    // Remove the book
+    cy.get('button').contains('Remove from Favorites').first().click();
+    cy.wait(500);
+    // Verify the UI updates
+    cy.get('button').contains('Remove from Favorites').should('have.length.lessThan', 2);
+  });
+
   it('should logout and protect routes', () => {
     // Login first
     cy.contains('Login').click();
