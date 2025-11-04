@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useAppDispatch } from '../store/hooks';
 import { setUser } from '../store/userSlice';
 import { useNavigate } from 'react-router-dom';
+// generated-by-copilot: Import sanitization utilities for XSS prevention
+import { isValidUsername } from '../utils/sanitize';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -13,6 +15,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    
+    // generated-by-copilot: Validate username format before submission
+    if (!isValidUsername(username)) {
+      setError('Invalid username format.');
+      return;
+    }
+    
     try {
       const res = await fetch('http://localhost:4000/api/login', {
         method: 'POST',

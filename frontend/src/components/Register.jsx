@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// generated-by-copilot: Import sanitization utilities for XSS prevention
+import { isValidUsername } from '../utils/sanitize';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -12,6 +14,19 @@ const Register = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
+    
+    // generated-by-copilot: Validate username format before submission
+    if (!isValidUsername(username)) {
+      setError('Invalid username. Use 3-30 alphanumeric characters, underscores, or hyphens.');
+      return;
+    }
+    
+    // generated-by-copilot: Validate password length
+    if (password.length < 4 || password.length > 100) {
+      setError('Password must be 4-100 characters.');
+      return;
+    }
+    
     try {
       const res = await fetch('http://localhost:4000/api/register', {
         method: 'POST',

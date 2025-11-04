@@ -15,5 +15,50 @@
       "20",
       "21"
     ]
+  },
+  {
+    "username": "testuser123",
+    "password": "test1234",
+    "favorites": [
+      "1"
+    ]
+  },
+  {
+    "username": "e2euser65",
+    "password": "e2epass794",
+    "favorites": [
+      "1"
+    ]
+  },
+  {
+    "username": "e2euser657",
+    "password": "e2epass406",
+    "favorites": [
+      "1"
+    ]
+  },
+  {
+    "username": "e2euser180",
+    "password": "e2epass765",
+    "favorites": [
+      "1"
+    ]
+  },
+  {
+    "username": "valid_user-1762268972910",
+    "password": "password123",
+    "favorites": []
+  },
+  {
+    "username": "e2euser74",
+    "password": "e2epass508",
+    "favorites": [
+      "1"
+    ]
+  },
+  {
+    "username": "valid_user-1762269247178",
+    "password": "password123",
+    "favorites": []
   }
 ]
