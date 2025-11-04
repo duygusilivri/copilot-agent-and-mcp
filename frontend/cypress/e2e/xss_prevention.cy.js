@@ -77,4 +77,3 @@ describe('XSS Prevention E2E Tests', () => {
     cy.contains('Password must be 4-100 characters').should('be.visible');
   });
 });
-});
