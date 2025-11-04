@@ -48,5 +48,17 @@
     "username": "valid_user-1762268972910",
     "password": "password123",
     "favorites": []
+  },
+  {
+    "username": "e2euser74",
+    "password": "e2epass508",
+    "favorites": [
+      "1"
+    ]
+  },
+  {
+    "username": "valid_user-1762269247178",
+    "password": "password123",
+    "favorites": []
   }
 ]

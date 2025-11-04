@@ -16,8 +16,6 @@ app.use(bodyParser.json());
 app.use((req, res, next) => {
   // Prevent browsers from MIME-sniffing
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  // Enable XSS filter in browsers
-  res.setHeader('X-XSS-Protection', '1; mode=block');
   // Prevent clickjacking
   res.setHeader('X-Frame-Options', 'DENY');
   // Content Security Policy
